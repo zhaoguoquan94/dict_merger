@@ -31,10 +31,23 @@ def main():
 
 	
 def merge(userJson,serverJson):
+#return Union of userJson and serverJson
 	userDict=json.loads(userJson)
-	serverDict=json.loads(serverDict)
+	serverDict=json.loads(serverJson)
 	userDict=dict(userDict,**serverDict)
-	return json.dump(userDict)
+	return json.JSONEncoder().encode(userDict)
+
+def mergeAndLog(userJson,serverJson):
+	userDict=json.loads(userJson)
+	serverDict=json.loads(serverJson)
+	userDictNew=dict(userDict,**serverDict)
+	log=[]
+	for key in serverDict:
+		if key not in userDict:
+			log.append((key,serverDict[key]))
+	log=tuple(log)
+	
+	return json.JSONEncoder().encode(userDictNew),log
 def writeToFile():
 	pass
 
