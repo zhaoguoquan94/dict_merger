@@ -30,6 +30,18 @@ def main():
 	fLog.close()
 
 	
+def merge(userJson,serverJson):
+	userDict=json.loads(userJson)
+	serverDict=json.loads(serverDict)
+	userDict=dict(userDict,**serverDict)
+	return json.dump(userDict)
+def writeToFile():
+	pass
+
+
+
+
+
 if __name__ == '__main__':
 	main()
 	
