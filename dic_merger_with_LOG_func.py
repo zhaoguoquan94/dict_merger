@@ -3,32 +3,19 @@ import os
 import sys
 import time
 def main():
-	# jsonFile1=input("input json file 1's path")
-	# jsonFile2=input("input json file 2's path")
-	# outputFileName=input("outputFileName's path")
-	jsonFile1=sys.argv[1]
-	jsonFile2=sys.argv[2]
-	outputFileName=sys.argv[3]
-	logFileName=sys.argv[4]
-	f1=open(jsonFile1)
-	f2=open(jsonFile2)
-	fout=open(outputFileName,"w")
-	fLog=open(logFileName,"w")
-	dic1=json.loads(f1.read())
-	dic2=json.loads(f2.read())
-	dicOut=dict(dic1,**dic2)
-	fLog.write("add these items \n"+str(time.asctime())+"\n")
-	fLog.write("	key{0:26}".format("")+"value"+"\n\n\n")
-	for key in dic2:
-		if key not in dic1:
-			fLog.write("	{0:30}".format(key)+str(dic2[key])+"\n")
-			# fLog.write(		key+"+++"+str(dic1[key])+"\n")
-	json.dump(dicOut,fout)
-	f1.close()
-	f2.close()
-	fout.close()
-	fLog.close()
+	#sys.argv pass the path and then call merge() or mergeAndLog() to union the json data
+	userJsonPath=sys.argv[1]
+	serverJsonPath=sys.argv[2]
+	logPath=sys.argv[3]
+	fUserJsonIn=open(userJsonPath)
+	fServerJsonIn=open(serverJsonPath)
+	userJson=json.loads(userJsonPath.read())
+	serverJson=json.loads(serverJsonPath.read())
+	fUserJsonIn.close()
+	fServerJsonIn.close()
+	(userJson,log)=mergeAndLog(userJson,serverJson,logPath)
 
+	writeToFile(userJson,log,userJsonPath)
 	
 def merge(userJson,serverJson):
 #return Union of userJson and serverJson
@@ -48,12 +35,11 @@ def mergeAndLog(userJson,serverJson):
 	log=tuple(log)
 	
 	return json.JSONEncoder().encode(userDictNew),log
-def writeToFile():
-	pass
-
-
-
-
+def writeToFile(userJson,log,userJsonPath,logPath):
+	fUser=open(userJsonPath,"w")
+	fLog=open(logPath,"w")
+	json.dump(userJson,userJsonPath)
+	fLog.write(str(log))
 
 if __name__ == '__main__':
 	main()
