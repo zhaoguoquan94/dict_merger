@@ -12,16 +12,18 @@ def main():
 	outputFileName=sys.argv[3]
 	f1=open(jsonFile1)
 	f2=open(jsonFile2)
-	fout=open(outputFileName,mode="w",encoding="utf8")
 	userJson=f1.read()
 	serverJson=f2.read()
+	f1.close()
+	f2.close()
 	timeBegin=time.time()
 	userJson=merge(userJson,serverJson)
 	timeConsumed=time.time()-timeBegin
 	print("merge 1 json file"+sys.argv[2]+" and timeConsumed="+str(timeConsumed))
+    
+	fout=open(outputFileName,mode="w",encoding="utf8")
 	fout.write(userJson)
-	f1.close()
-	f2.close()
+	
 	fout.close()
 def merge(userJson,serverJson):
 #return Union of userJson and serverJson

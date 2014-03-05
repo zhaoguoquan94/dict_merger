@@ -11,6 +11,15 @@ python3 dic_merger.py file1 file2 file3
 	file2 is  dictionary in server
 	file3 is output file ,mergered file
 
+Useage:  in command line
+python3 testSingleMerge [userJsonFile] [serverJsonFile] [outputFile]
+[in]ZGQdeMacBook-Air:test_case user$ python3 testSingleMerge.py userJson.json serverJson2.json userJson.json 
+[out]merge 1 json fileserverJson2.json and timeConsumed=0.022077083587646484
+
+
+###Useage:  in command line
+[in]ZGQdeMacBook-Air:test_case user$ python3 testMutiMerge.py 
+[output]merge 27 json files,and timeConsumed=0.2748990058898926
 
 
 ==============
