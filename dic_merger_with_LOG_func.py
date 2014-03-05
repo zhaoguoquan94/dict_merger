@@ -9,11 +9,11 @@ def main():
 	logPath=sys.argv[3]
 	fUserJsonIn=open(userJsonPath)
 	fServerJsonIn=open(serverJsonPath)
-	userJson=json.loads(userJsonPath.read())
-	serverJson=json.loads(serverJsonPath.read())
+	userJson=json.loads(fUserJsonIn.read())
+	serverJson=json.loads(fServerJsonIn.read())
 	fUserJsonIn.close()
 	fServerJsonIn.close()
-	(userJson,log)=mergeAndLog(userJson,serverJson,logPath)
+	(userJson,log)=mergeAndLog(userJson,serverJson)
 
 	writeToFile(userJson,log,userJsonPath)
 	
@@ -25,7 +25,7 @@ def merge(userJson,serverJson):
 	return json.JSONEncoder().encode(userDict)
 
 def mergeAndLog(userJson,serverJson):
-	userDict=json.loads(userJson)
+	userDict=json.loads("{}")
 	serverDict=json.loads(serverJson)
 	userDictNew=dict(userDict,**serverDict)
 	log=[]
