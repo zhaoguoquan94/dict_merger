@@ -25,7 +25,7 @@ def merge(userJson,serverJson):
 	return json.JSONEncoder().encode(userDict)
 
 def mergeAndLog(userJson,serverJson):
-	userDict=json.loads("{}")
+	userDict=json.loads(userJson)
 	serverDict=json.loads(serverJson)
 	userDictNew=dict(userDict,**serverDict)
 	log=[]
@@ -36,8 +36,8 @@ def mergeAndLog(userJson,serverJson):
 	
 	return json.JSONEncoder().encode(userDictNew),log
 def writeToFile(userJson,log,userJsonPath,logPath):
-	fUser=open(userJsonPath,"w")
-	fLog=open(logPath,"w")
+	fUser=open(userJsonPath,mode="w",encoding="utf8")
+	fLog=open(logPath,mode="w",encoding="utf8")
 	json.dump(userJson,userJsonPath)
 	fLog.write(str(log))
 
