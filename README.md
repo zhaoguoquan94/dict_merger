@@ -2,8 +2,26 @@ dict_merger
 ===========
 a merger using python to merge dictionary
 
+2014.3.8 update:
+useage:
+when you want to merge sourseJson and patchJson,import merger.py like this:
 
-useage:in command line type
+>>>import merger
+>>>merger.merge(sourceJson,patchJson)
+
+
+when you want log as well, type this:
+
+>>>import merger
+>>>merger.mergeAndLog(sourceJson,patchJson)
+
+
+
+
+
+old useage
+=======================
+in command line type
 
 python3 dic_merger.py file1 file2 file3
 
