@@ -15,7 +15,8 @@ when you want log as well, type this:
 >>>import merger
 >>>merger.mergeAndLog(sourceJson,patchJson)
 
-
+in /test_case we have serverJson1.json to serverJson5.json consist of human-readable json data.
+in /test_case we have serverJson6.json to serverJson27.json consist of big json data generated from KeyNote.
 
 
 
