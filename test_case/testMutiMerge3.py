@@ -9,7 +9,7 @@ path=os.getcwd()
 serverJson=[]
 for file in os.listdir(path):
 	if(file.find("serverJson")!=-1):
-		serverJson.append(codecs.open(os.path.join(path,file),'r',"utf8").read())
+		serverJson.append(open(os.path.join(path,file),mode='r',encoding="utf8").read())
 
 #we assume that userJson is empty at the beginning
 userJson="{}"

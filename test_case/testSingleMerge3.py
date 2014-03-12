@@ -1,3 +1,4 @@
+#this moudle is uesd in python3
 ###Useage:  in command line
 #python3 testSingleMerge [userJsonFile] [serverJsonFile] [outputFile]
 
@@ -6,15 +7,14 @@ import os
 import sys
 import time
 import merger
-import codecs
 def main():
 
 	jsonFile1=sys.argv[1]
 	jsonFile2=sys.argv[2]
 	if len(sys.argv)==4:
 		outputFileName=sys.argv[3]
-	f1=codecs.open(jsonFile1)
-	f2=codecs.open(jsonFile2)
+	f1=open(jsonFile1)
+	f2=open(jsonFile2)
 	userJson=f1.read()
 	serverJson=f2.read()
 	f1.close()
@@ -24,10 +24,10 @@ def main():
 	timeConsumed=time.time()-timeBegin
 	print("merge 1 json file"+sys.argv[2]+" and timeConsumed="+str(timeConsumed))
 	if len(sys.argv)==3:
-		fout=codecs.open(jsonFile1,"w","utf8")
+		fout=open(jsonFile1,mode="w",encoding="utf8")
 		fout.write(userJson)
 	else:
-		fout=codecs.open(outputFileName,"w","utf8")
+		fout=open(outputFileName,mode="w",encoding="utf8")
 		fout.write(userJson)
 		fout.close()
 

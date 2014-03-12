@@ -1,3 +1,4 @@
+#this moudle is uesd in python3
 import json
 import os
 import sys
@@ -9,6 +10,10 @@ Args:
 	sourceJSON:origin json which need to patch.
 	patchJSON:json that need to be added to sourceJSON.
 	"""
+	if sourceJSON=="":
+		sourceJSON="{}"
+	if patchJSON=="":
+		patchJSON="{}"
 	sourceDict=json.loads(sourceJSON)
 	patchDict=json.loads(patchJSON)
 	sourceDict=dict(sourceDict,**patchDict)
